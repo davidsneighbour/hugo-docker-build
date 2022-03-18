@@ -17,5 +17,6 @@ RUN ["/usr/bin/git", "clone", "--depth", "1", "--branch", "v0.95.0", "https://gi
 WORKDIR "/app/hugo"
 ENV CGO_ENABLED="1"
 # See https://discourse.gohugo.io/t/building-hugo-missing-dependencies/37738 on why this is needed
+RUN ["/usr/bin/go", "version"]
 RUN ["/usr/bin/go", "mod", "download", "github.com/yuin/goldmark"]
 RUN ["/usr/bin/go", "build", "-v", "--tags", "extended"]
